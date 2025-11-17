@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coloring Page Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 AI Coloring Page Generator</h1>
+            <p>Describe what you'd like to color, and AI will create it for you!</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <input 
+                    type="text" 
+                    id="promptInput" 
+                    placeholder="e.g., a friendly dragon in a castle"
+                    maxlength="200"
+                />
+                <button id="generateBtn" onclick="generateColoring()">
+                    Generate Coloring Page
+                </button>
+            </div>
+
+            <div id="loadingSpinner" class="spinner hidden">
+                <div class="spinner-circle"></div>
+                <p>Creating your coloring page... This may take 20-30 seconds.</p>
+            </div>
+
+            <div id="errorMessage" class="error hidden"></div>
+
+            <div id="resultSection" class="result-section hidden">
+                <h2>Your Coloring Page</h2>
+                <img id="coloringImage" alt="Generated coloring page" />
+                <div class="button-group">
+                    <button onclick="downloadImage()">📥 Download</button>
+                    <button onclick="printImage()">🖨️ Print</button>
+                    <button onclick="resetApp()">🔄 Create Another</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with Hugging Face AI | 
+            <a href="https://github.com//nidhivshandilya/coloring-page-generator" target="_blank">
+                View on GitHub
+            </a>
+            </p>
+        </footer>
+
+        <div id="apiKeyModal" class="modal">
+            <div class="modal-content">
+                <h2>Welcome! 🎨</h2>
+                <p>To use this app, you need your free Hugging Face API token.</p>
+                <ol>
+                    <li>If you haven't already, get your token at <a href="https://huggingface.co/settings/tokens" target="_blank">Hugging Face</a></li>
+                    <li>Create a "Read" token</li>
+                    <li>Paste it below (it's stored only in your browser)</li>
+                </ol>
+                <input 
+                    type="password" 
+                    id="apiKeyInput" 
+                    placeholder="Paste your API token here (starts with hf_)"
+                />
+                <button onclick="saveApiKey()">Save & Start</button>
+                <p class="note">Your token stays on your computer only.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
