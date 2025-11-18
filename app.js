@@ -1,4 +1,4 @@
-const HF_API_URL = 'https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2-1';
+const HF_API_URL = 'https://corsproxy.io/?https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2-1';
 const API_KEY_STORAGE = 'hf_api_token';
 
 window.addEventListener('DOMContentLoaded', () => {
