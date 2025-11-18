@@ -1,9 +1,8 @@
-const HF_API_URL = 'https://corsproxy.io/?https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2-1';
-const API_KEY_STORAGE = 'hf_api_token';
+const API_KEY_STORAGE = 'user_setup_complete';
 
 window.addEventListener('DOMContentLoaded', () => {
-    const apiKey = localStorage.getItem(API_KEY_STORAGE);
-    if (!apiKey) {
+    const setupComplete = localStorage.getItem(API_KEY_STORAGE);
+    if (!setupComplete) {
         document.getElementById('apiKeyModal').style.display = 'flex';
     } else {
         document.getElementById('apiKeyModal').style.display = 'none';
@@ -11,32 +10,13 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function saveApiKey() {
-    const apiKey = document.getElementById('apiKeyInput').value.trim();
-    
-    if (!apiKey) {
-        alert('Please enter your API token');
-        return;
-    }
-    
-    if (!apiKey.startsWith('hf_')) {
-        alert('Hugging Face tokens start with "hf_". Please check your token.');
-        return;
-    }
-    
-    localStorage.setItem(API_KEY_STORAGE, apiKey);
+    localStorage.setItem(API_KEY_STORAGE, 'true');
     document.getElementById('apiKeyModal').style.display = 'none';
-    alert('Token saved! You can now generate coloring pages. 🎨');
+    alert('Setup complete! You can now generate coloring pages. 🎨');
 }
 
 async function generateColoring() {
     const prompt = document.getElementById('promptInput').value.trim();
-    const apiKey = localStorage.getItem(API_KEY_STORAGE);
-    
-    if (!apiKey) {
-        showError('Please set your API token first');
-        document.getElementById('apiKeyModal').style.display = 'flex';
-        return;
-    }
     
     if (!prompt) {
         showError('Please describe what you want to color');
@@ -49,43 +29,35 @@ async function generateColoring() {
     document.getElementById('errorMessage').classList.add('hidden');
     
     try {
-        const coloringPrompt = `${prompt}, coloring book page, black and white line art, simple outlines, no shading, no colors, thick lines, children's coloring book style, white background, clean line drawing`;
+        const coloringPrompt = `${prompt}, simple black and white coloring book page, thick lines, no shading, clean outlines, suitable for children`;
 
-        const response = await fetch(HF_API_URL, {
+        const response = await fetch('https://api.limewire.com/api/image/generation', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${apiKey}`,
                 'Content-Type': 'application/json',
+                'X-Api-Version': 'v1',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({
-                inputs: coloringPrompt,
-                parameters: {
-                    negative_prompt: "color, colored, shading, gradient, complex, detailed, photorealistic, blurry, watermark",
-                    num_inference_steps: 30,
-                    guidance_scale: 7.5
-                }
+                prompt: coloringPrompt,
+                aspect_ratio: "1:1"
             })
         });
         
         if (!response.ok) {
-            if (response.status === 503) {
-                throw new Error('The AI model is waking up. Wait 20 seconds and click Generate again. This is normal! ⏳');
-            }
-            if (response.status === 401) {
-                throw new Error('Your token is invalid. Please enter it again.');
-            }
-            throw new Error(`Error ${response.status}. Please try again.`);
+            throw new Error('Unable to generate image. Please try again.');
         }
         
-        const imageBlob = await response.blob();
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            displayImage(reader.result);
-        };
-        reader.readAsDataURL(imageBlob);
+        const data = await response.json();
+        
+        if (data.data && data.data[0] && data.data[0].asset_url) {
+            displayImage(data.data[0].asset_url);
+        } else {
+            throw new Error('No image generated');
+        }
         
     } catch (error) {
-        showError(error.message);
+        showError(`Error: ${error.message}. This free service may have limits. Try again in a moment.`);
     } finally {
         document.getElementById('generateBtn').disabled = false;
         document.getElementById('loadingSpinner').classList.add('hidden');
@@ -98,9 +70,9 @@ function showError(message) {
     errorDiv.classList.remove('hidden');
 }
 
-function displayImage(base64Image) {
+function displayImage(imageUrl) {
     const img = document.getElementById('coloringImage');
-    img.src = base64Image;
+    img.src = imageUrl;
     document.getElementById('resultSection').classList.remove('hidden');
 }
 
