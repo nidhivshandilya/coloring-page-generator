@@ -6,7 +6,7 @@ An interactive web application that generates custom coloring pages using AI. Pe
 
 Obviously, I had to refine my prompt as we iterated - for example change from Gemini to Hugging Face to Puter; or telling Claude again and again to simplify technical instructions like find X in line Y of file Z and replace with this code snippet. Doing this was a wonderful learning itself.
 
-![Demo] (https://youtu.be/2bShKrudlf4)
+Demo: (https://youtu.be/2bShKrudlf4)
 
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
