@@ -18,7 +18,7 @@ Obviously, I had to refine my prompt as we iterated - for example change from Ge
 - 🆓 100% free - no sign-up required
 - 📱 Mobile-responsive design
 
-## 🚀 Live Demo
+## Demo
 
 **[Try it now!](https://nidhivshandilya.github.io/coloring-page-generator/)**
 
