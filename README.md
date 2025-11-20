@@ -9,7 +9,8 @@ Obviously, I had to refine my prompt as we iterated - for example change from Ge
 ![Screenshot](images/Demo.png)
 
 ## 🎥 Demo Video
-[![Watch Demo](https://img.youtube.com/vi/2DshJXzutf4/maxresdefault.jpg)
+
+[![Watch Demo ](https://img.youtube.com/vi/2DshJXzutf4/0.jpg)](https://youtu.be/2DshJXzutf4)
 
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
