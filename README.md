@@ -12,8 +12,6 @@ Obviously, I had to refine my prompt as we iterated - for example change from Ge
 
 [![Watch Demo](https://img.youtube.com/vi/2DshJXzutf4/maxresdefault.jpg)](https://youtu.be/2DshJXzutf4)
 
-*Click the thumbnail above to watch the full demo*
-
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## ✨ Features
