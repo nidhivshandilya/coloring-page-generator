@@ -6,7 +6,7 @@ An interactive web application that generates custom coloring pages using AI. Pe
 
 Obviously, I had to refine my prompt as we iterated - for example change from Gemini to Hugging Face to Puter; or telling Claude again and again to simplify technical instructions like find X in line Y of file Z and replace with this code snippet. Doing this was a wonderful learning itself.
 
-![Screenshot](https://github.com/nidhivshandilya/coloring-page-generator/blob/main/images/Screenshot%202025-11-20%20at%2015.46.10.png)
+![Screenshot](images/Demo.png)
 
 ## 🎥 Demo Video
 
