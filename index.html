@@ -22,7 +22,7 @@
                     placeholder="e.g., a friendly dragon in a castle"
                     maxlength="200"
                 />
-                <button id="generateBtn" onclick="generateColoring()">
+                <button id="generateBtn">
                     Generate Coloring Page
                 </button>
             </div>
@@ -38,6 +38,135 @@
                 <h2>Your Coloring Page</h2>
                 <img id="coloringImage" alt="Generated coloring page" />
                 <div class="button-group">
-                    <button onclick="downloadImage()">📥 Download</button>
-                    <button onclick="printImage()">🖨️ Print</button>
-                    <butt
+                    <button id="downloadBtn">📥 Download</button>
+                    <button id="printBtn">🖨️ Print</button>
+                    <button id="resetBtn">🔄 Create Another</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with Puter AI | 
+            <a href="https://github.com/nidhivshandilya/coloring-page-generator" target="_blank">
+                View on GitHub
+            </a>
+            </p>
+        </footer>
+
+        <div id="apiKeyModal" class="modal">
+            <div class="modal-content">
+                <h2>Welcome! 🎨</h2>
+                <p>This app uses free AI to generate coloring pages!</p>
+                <p>No sign-up or API key needed - just click below to start.</p>
+                <button id="startBtn">Let's Go!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const API_KEY_STORAGE = 'user_setup_complete';
+
+    // Wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Check if setup is complete
+        const setupComplete = localStorage.getItem(API_KEY_STORAGE);
+        if (!setupComplete) {
+            document.getElementById('apiKeyModal').style.display = 'flex';
+        } else {
+            document.getElementById('apiKeyModal').style.display = 'none';
+        }
+
+        // Start button
+        document.getElementById('startBtn').addEventListener('click', function() {
+            localStorage.setItem(API_KEY_STORAGE, 'true');
+            document.getElementById('apiKeyModal').style.display = 'none';
+        });
+
+        // Generate button
+        document.getElementById('generateBtn').addEventListener('click', generateColoring);
+
+        // Download button
+        document.getElementById('downloadBtn').addEventListener('click', downloadImage);
+
+        // Print button
+        document.getElementById('printBtn').addEventListener('click', printImage);
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', resetApp);
+
+        // Enter key support
+        document.getElementById('promptInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateColoring();
+            }
+        });
+    });
+
+    function generateColoring() {
+        // Check if puter is loaded
+        if (typeof puter === 'undefined') {
+            showError('AI library is still loading. Please wait a moment and try again.');
+            return;
+        }
+
+        const prompt = document.getElementById('promptInput').value.trim();
+        
+        if (!prompt) {
+            showError('Please describe what you want to color');
+            return;
+        }
+        
+        document.getElementById('generateBtn').disabled = true;
+        document.getElementById('loadingSpinner').classList.remove('hidden');
+        document.getElementById('resultSection').classList.add('hidden');
+        document.getElementById('errorMessage').classList.add('hidden');
+        
+        const coloringPrompt = `${prompt}, simple black and white coloring book page for children, thick outlines, no shading, clean line art`;
+
+        puter.ai.txt2img(coloringPrompt, {
+            model: "gpt-image-1-mini",
+            quality: "low"
+        })
+        .then(function(imageElement) {
+            const resultImg = document.getElementById('coloringImage');
+            resultImg.src = imageElement.src;
+            document.getElementById('resultSection').classList.remove('hidden');
+            document.getElementById('generateBtn').disabled = false;
+            document.getElementById('loadingSpinner').classList.add('hidden');
+        })
+        .catch(function(error) {
+            showError('Error: ' + error.message + '. Please try again.');
+            document.getElementById('generateBtn').disabled = false;
+            document.getElementById('loadingSpinner').classList.add('hidden');
+        });
+    }
+
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = message;
+        errorDiv.classList.remove('hidden');
+    }
+
+    function downloadImage() {
+        const img = document.getElementById('coloringImage');
+        const link = document.createElement('a');
+        link.href = img.src;
+        link.download = 'coloring-page-' + Date.now() + '.png';
+        link.click();
+    }
+
+    function printImage() {
+        const img = document.getElementById('coloringImage');
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Print Coloring Page</title><style>@media print { body { margin: 0; } img { max-width: 100%; height: auto; } } body { display: flex; justify-content: center; align-items: center; min-height: 100vh; } img { max-width: 100%; height: auto; }</style></head><body><img src="' + img.src + '" onload="window.print();" /></body></html>');
+    }
+
+    function resetApp() {
+        document.getElementById('promptInput').value = '';
+        document.getElementById('resultSection').classList.add('hidden');
+        document.getElementById('errorMessage').classList.add('hidden');
+    }
+    </script>
+</body>
+</html>
