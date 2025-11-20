@@ -1,8 +1,12 @@
 # 🎨 AI Coloring Page Generator
 
-An interactive web application that generates custom coloring pages using AI. Perfect for parents, teachers, and kids!
+An interactive web application that generates custom coloring pages using AI. Perfect for parents, teachers and teachers! I built this to get hands-on experience with the latest AI tools. The idea for this specific use-case came to me when my son would ask me for bizarre coloring pages (like tsunami, tornado and volcano erupting together) and we'd muck around on google image search to see if someone created something like this. My goal was to learn most of it without spending anything on subscriptions. So, I built this majorly using my mind, Claude free chatbot and Github. Below was my prompt to Claude and it took many iterations to get here. I worked through bug fixes and issue resolutions with Claude as we both tried to get things to work. I learned a good deal and the process was very enjoyable.
 
-![Demo](https://img.shields.io/badge/Status-Live-success)
+**Prompt**: "Help me build a web app that is an on-demand coloring page generator for kids and parents. You simply type in natural language what you'd like to color today and the app creates a page for you that you print. This web app is going to be my open source project that I show on github. It should utilize all free resources - i don't want to pay for anything. You create detailed step by step instructions for me and the end goal is a published web app using github, replit, google gemini"
+
+Obviously, I had to refine my prompt as we iterated - for example change from Gemini to Hugging Face to Puter; or telling Claude again and again to simplify technical instructions like find X in line Y of file Z and replace with this code snippet. Doing this was a wonderful learning itself.
+
+![Demo](https://youtu.be/2bShKrudlf4)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## ✨ Features
@@ -33,6 +37,7 @@ Try these prompts to generate coloring pages:
 - **AI**: Puter.js API for image generation
 - **Hosting**: GitHub Pages
 - **Design**: Custom CSS with responsive layout
+- **ThinkingPartner and guide**: Claude free chatbot
 
 ## 🎯 How It Works
 
@@ -81,11 +86,11 @@ MIT License - feel free to use this code for your own projects!
 
 **Nidhi Vshandilya**
 - GitHub: [@nidhivshandilya](https://github.com/nidhivshandilya)
-- Portfolio: [Add your portfolio link]
-- LinkedIn: [Add your LinkedIn]
+- LinkedIn: [https://www.linkedin.com/in/nidhi-v-shandilya-b05170b/]
 
 ## 🙏 Acknowledgments
 
+- Claude - just so performant and brilliant
 - Puter.js for providing free AI image generation
 - GitHub Pages for free hosting
 - The open-source community
@@ -94,50 +99,4 @@ MIT License - feel free to use this code for your own projects!
 
 ⭐ If you found this project helpful, please give it a star!
 
-**Built as a portfolio project to showcase web development and AI integration skills**
-```
 
-6. **Update these sections:**
-   - Replace `[Add your portfolio link]` with your actual portfolio URL (if you have one)
-   - Replace `[Add your LinkedIn]` with your LinkedIn profile URL
-
-7. **Click "Commit changes"**
-
----
-
-## 🎯 What to Do Next:
-
-### Share It!
-
-**LinkedIn Post Template:**
-```
-🎨 Just launched my AI-powered coloring page generator!
-
-I built a web app where you describe what you want to color, and AI instantly creates a printable coloring page. Perfect for parents, teachers, and kids.
-
-✨ Features:
-- Natural language input
-- AI image generation
-- Instant download/print
-- 100% free, no sign-up
-
-Built with JavaScript, Puter AI API, and hosted on GitHub Pages.
-
-Try it: https://nidhivshandilya.github.io/coloring-page-generator/
-Code: https://github.com/nidhivshandilya/coloring-page-generator
-
-#WebDevelopment #AI #JavaScript #Portfolio #OpenSource
-```
-
-### Add to Your Resume:
-
-**Project Section:**
-```
-AI Coloring Page Generator | Personal Project
-- Built full-stack web application integrating Puter.js AI API for image generation
-- Implemented responsive UI with vanilla JavaScript (no frameworks)
-- Deployed on GitHub Pages with zero hosting costs
-- Achieved 100% functional end-to-end user workflow
-
-Technologies: HTML5, CSS3, JavaScript, Puter.js API, GitHub Pages
-Link: https://nidhivshandilya.github.io/coloring-page-generator/
