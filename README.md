@@ -10,7 +10,11 @@ Obviously, I had to refine my prompt as we iterated - for example change from Ge
 
 ## 🎥 Demo Video
 
-[![Watch Demo ](https://img.youtube.com/vi/2DshJXzutf4/0.jpg)](https://youtu.be/2DshJXzutf4)
+## 🎥 Demo Video
+
+[<img src="https://img.youtube.com/vi/2DshJXzutf4/0.jpg" width="600">](https://www.youtube.com/watch?v=2DshJXzutf4)
+
+*Click the image above to watch the demo*
 
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
