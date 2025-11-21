@@ -41,7 +41,7 @@ Try these prompts to generate coloring pages:
 - **AI**: Puter.js API for image generation
 - **Hosting**: GitHub Pages
 - **Design**: Custom CSS with responsive layout
-- **ThinkingPartner and guide**: Claude free chatbot
+- **Thinking Partner and Guide**: Claude free chatbot
 
 ## 🎯 How It Works
 
@@ -50,29 +50,6 @@ Try these prompts to generate coloring pages:
 3. Puter AI generates a black and white line drawing
 4. User can download or print the coloring page
 
-## 💻 Local Development
-```bash
-# Clone the repository
-git clone https://github.com/nidhivshandilya/coloring-page-generator.git
-
-# Open index.html in your browser
-# No build process needed!
-```
-
-## 🌟 Project Highlights
-
-This project demonstrates:
-- Integration with third-party AI APIs
-- Responsive web design without frameworks
-- Clean, maintainable vanilla JavaScript
-- User-friendly interface design
-- Cross-browser compatibility
-
-## 📸 Screenshots
-
-![Screenshot 1](https://via.placeholder.com/800x400?text=Add+Your+Screenshot+Here)
-
-*Tip: Take a screenshot of your working app and upload it to your repository, then update this link*
 
 ## 🤝 Contributing
 
