@@ -9,7 +9,8 @@ Obviously, I had to refine my prompt as we iterated - for example change from Ge
 ![Screenshot](images/Demo.png)
 
 ## 🎥 Demo Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2bShKrudlf4?si=H1yP4Q5l2M9zaIEK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+(https://www.youtube.com/watch?v=2bShKrudlf4)
+
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## ✨ Features
